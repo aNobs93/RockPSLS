@@ -6,7 +6,7 @@ namespace RPSLS
 {
     public abstract class Player
     {
-        public List<string> choices = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
+        public List<string> choices = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
         public string gesture;
         public int score;
         public string name;

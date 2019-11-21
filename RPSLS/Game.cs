@@ -17,14 +17,11 @@ namespace RPSLS
             {
                 case "1":
                     return numberPlayers;
-                    break;
                 case "2":
                     return numberPlayers;
-                    break;
                 default:
                     Console.WriteLine("Please enter a valid number");
                     return GetNumberPlayer();
-                    break;
             }
         }
 
@@ -44,171 +41,133 @@ namespace RPSLS
 
         public void RuneGame()
         {
+            Console.Clear();
             string input = GetNumberPlayer();
             CreatePlayer(input);
             p1.ChooseName();
             p2.ChooseName();
             Console.Clear();
-            p1.ChooseGesture();
-            p2.ChooseGesture();
-            Console.WriteLine(p1.name + " has chosen " + p1.gesture);
-            Console.WriteLine(p2.name + " has chosen " + p2.gesture);
-            GameRules();
-            Console.Clear();
+            while (p1.score < 3 || p2.score < 3)
+            {
+                p1.ChooseGesture();
+                p2.ChooseGesture();
+                Console.WriteLine(p1.name + " has chosen " + p1.gesture);
+                Console.WriteLine(p2.name + " has chosen " + p2.gesture);
+                GameRules();
+                Console.Clear();
+            }
         }
-
+        
         public void GameRules()
         {
             string a = p1.gesture;
             string b = p2.gesture;
-            if (a == b)
+            if (p1.gesture == p2.gesture)
             {
-                Console.WriteLine(a + " VS " + b + " Doesn't do much! Try Again!");
-                int player1 = 0;
-                int player2 = 0;
-                Points(player1, player2);
+                Console.WriteLine(p1.gesture + " VS " + p2.gesture + " Doesn't do much! Try Again!");
+                Points(0, 0);
             }
             else
             {
-                if (a == p1.choices[0] && b == p2.choices[2])
+                if (p1.gesture == p1.choices[0] && p2.gesture == p2.choices[2])
                 {
-                    Console.WriteLine(a + " Crushes " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Crushes " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[2] && b == p2.choices[1])
+                else if (p1.gesture == p1.choices[2] && p2.gesture == p2.choices[1])
                 {
-                    Console.WriteLine(a + " Cuts " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Cuts " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[1] && b == p2.choices[0])
+                else if (p1.gesture == p1.choices[1] && p2.gesture == p2.choices[0])
                 {
-                    Console.WriteLine(a + " Covers " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Covers " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[0] && b == p2.choices[3])
+                else if (p1.gesture == p1.choices[0] && p2.gesture == p2.choices[3])
                 {
-                    Console.WriteLine(a + " Crushes " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Crushes " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[3] && b == p2.choices[4])
+                else if (p1.gesture == p1.choices[3] && p2.gesture == p2.choices[4])
                 {
-                    Console.WriteLine(a + " Poisons " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Poisons " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[4] && b == p2.choices[2])
+                else if (p1.gesture == p1.choices[4] && p2.gesture == p2.choices[2])
                 {
-                    Console.WriteLine(a + " Smashes " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Smashes " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[2] && b == p2.choices[3])
+                else if (p1.gesture == p1.choices[2] && p2.gesture == p2.choices[3])
                 {
-                    Console.WriteLine(a + " Decapitates " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Decapitates " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[3] && b == p2.choices[1])
+                else if (p1.gesture == p1.choices[3] && p2.gesture == p2.choices[1])
                 {
-                    Console.WriteLine(a + " Eats " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Eats " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[1] && b == p2.choices[4])
+                else if (p1.gesture == p1.choices[1] && p2.gesture == p2.choices[4])
                 {
-                    Console.WriteLine(a + " Disproves " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Disproves " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (a == p1.choices[4] && a == p2.choices[0])
+                else if (p1.gesture == p1.choices[4] && p2.gesture == p2.choices[0])
                 {
-                    Console.WriteLine(a + " Vaporizes " + b);
-                    int player1 = 1;
-                    int player2 = 0;
-                    Points(player1, player2);
+                    Console.WriteLine(p1.gesture + " Vaporizes " + p2.gesture);
+                    Points(1, 0);
                 }
-                else if (b == p1.choices[0] && a == p2.choices[2])
+                else if (p2.gesture == p1.choices[0] && p1.gesture == p2.choices[2])
                 {
-                    Console.WriteLine(b + " Crushes " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Crushes " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[2] && a == p2.choices[1])
+                else if (p2.gesture == p1.choices[2] && p1.gesture == p2.choices[1])
                 {
-                    Console.WriteLine(b + " Cuts " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Cuts " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[1] && a == p2.choices[0])
+                else if (p2.gesture == p1.choices[1] && p1.gesture == p2.choices[0])
                 {
-                    Console.WriteLine(b + " Covers " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Covers " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[0] && a == p2.choices[3])
+                else if (p2.gesture == p1.choices[0] && p1.gesture == p2.choices[3])
                 {
-                    Console.WriteLine(b + " Crushes " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Crushes " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[3] && a == p2.choices[4])
+                else if (p2.gesture == p1.choices[3] && p1.gesture == p2.choices[4])
                 {
-                    Console.WriteLine(b + " Poisons " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Poisons " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[4] && a == p2.choices[2])
+                else if (p2.gesture == p1.choices[4] && p1.gesture == p2.choices[2])
                 { 
-                    Console.WriteLine(b + " Smashes " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Smashes " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[2] && a == p2.choices[3])
+                else if (p2.gesture == p1.choices[2] && p1.gesture == p2.choices[3])
                     {
-                        Console.WriteLine(b + " Decapitates " + a);
-                        int player1 = 0;
-                        int player2 = 1;
-                        Points(player1, player2);
+                        Console.WriteLine(p2.gesture + " Decapitates " + p1.gesture);
+                        Points(0, 1);
                     }
-                    else if (b == p1.choices[3] && a == p2.choices[1])
+                    else if (p2.gesture == p1.choices[3] && p1.gesture == p2.choices[1])
                 {
-                    Console.WriteLine(b + " Eats " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Eats " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[1] && a == p2.choices[4])
+                else if (p2.gesture == p1.choices[1] && p1.gesture == p2.choices[4])
                 {
-                    Console.WriteLine(b + " Disproves " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Disproves " + p1.gesture);
+                    Points(0, 1);
                 }
-                else if (b == p1.choices[4] && a == p2.choices[0])
+                else if (p2.gesture == p1.choices[4] && p1.gesture == p2.choices[0])
                 { 
-                    Console.WriteLine(b + " Vaporizes " + a);
-                    int player1 = 0;
-                    int player2 = 1;
-                    Points(player1, player2);
+                    Console.WriteLine(p2.gesture + " Vaporizes " + p1.gesture);
+                    Points(0,1);
                 }
             }
             
@@ -217,24 +176,51 @@ namespace RPSLS
         
         public void Points(int _player1, int _player2)
         {
+            string retry;
             //p1.score = 0;
             //p2.score = 0;
             if(_player1 > _player2)
             {
                 p1.score++;
             }
-            else
+            else if(_player2 > _player1)
             {
                 p2.score++;
             }
+            
             if(p1.score == 3)
             {
                 Console.WriteLine(p1.name + " has won 3 times!");
+                Console.WriteLine("Would you like to play again?\nYes/No");
+                retry = Console.ReadLine().ToLower().Trim();
+                if(retry == "yes")
+                {
+                    RuneGame();
+                }
+                else
+                {
+                    return;
+                }
+
             }
-            if(p2.score == 3)
+            else if(p2.score == 3)
             {
                 Console.WriteLine(p2.name + " has won 3 times!");
+                Console.WriteLine("Would you like to play again?\nYes/No");
+                retry = Console.ReadLine().ToLower().Trim();
+                if (retry == "yes")
+                {
+                    RuneGame();
+                }
+                else
+                {
+                    return;
+                }
             }
+
+            Console.WriteLine("Current score is:\n" + p1.name + "-" + p1.score + "\n" + p2.name + "-" + p2.score);
+            Console.WriteLine("Press any key to continue...");
+            //Console.ReadKey(true);
 
         }
         
