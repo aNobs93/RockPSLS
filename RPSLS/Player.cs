@@ -4,28 +4,15 @@ using System.Text;
 
 namespace RPSLS
 {
-    public class Player
+    public abstract class Player
     {
-        //List<string> gestures = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
+        public List<string> choices = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
         public string gesture;
         public int score;
         public string name;
-        public Player()
-        {
 
-        }
-        public void EnterName()
-        {
-            Console.WriteLine("Please enter your name.");
-            name = Console.ReadLine();
-        }
+        public abstract void ChooseGesture();
 
-        public virtual void EnterGesture()
-        {
-            Console.WriteLine("Please enter either \nRock!\nPaper!\nScissors!\nLizard!\nSpock!");
-            gesture = Console.ReadLine().ToLower();
-
-        }
-        //methods - choose gesture, choose name, 
+        public abstract void ChooseName();
     }
 }

@@ -6,10 +6,20 @@ namespace RPSLS
 {
     public class Human : Player
     {
-        public string user;
 
-        public Human()
+        public override void ChooseGesture()
         {
+            Console.WriteLine("Please Choose one of the following");
+            Console.WriteLine("Rock, Paper, Scissors, Lizard, Spock");
+            gesture = Console.ReadLine().Trim().ToLower();
+            Console.Clear();
+        }
+
+        public override void ChooseName()
+        {
+
+            Console.WriteLine("Please enter your name!");
+            name = Console.ReadLine();
 
         }
 

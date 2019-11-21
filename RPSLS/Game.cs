@@ -6,35 +6,55 @@ namespace RPSLS
 {
     public class Game
     {
-        public string player;
-        //players 1 or 2
+        Player player1;
+        Player player2;
 
-        public Game()
+        public string GetNumberPlayer()
         {
-
-        }
-
-        public void MainMenu()
-        {
-            Console.WriteLine("Please enter who you would like to play against.\n-Human\n-Computer");
-
-            player = Console.ReadLine().ToLower();
-
-            switch (player)
+            Console.WriteLine("Please enter the number of players.");
+            string numberPlayers = Console.ReadLine();
+            switch (numberPlayers)
             {
-                case "human":
-
+                case "1":
+                    return numberPlayers;
                     break;
-                case "computer":
-
+                case "2":
+                    return numberPlayers;
                     break;
                 default:
-                    Console.WriteLine("Whoops! Try again!");
+                    Console.WriteLine("Please enter a valid number");
+                    return GetNumberPlayer();
                     break;
-
             }
         }
 
+        public void CreatePlayer(string numberPlayers)
+        {
+            if(numberPlayers == "1")
+            {
+                player1 = new Human();
+                player2 = new Computer();
+            }
+            else if(numberPlayers == "2")
+            {
+                player1 = new Human();
+                player2 = new Human();
+            }
+        }
+
+        public void RuneGame()
+        {
+            string input = GetNumberPlayer();
+            CreatePlayer(input);
+            player1.ChooseName();
+            player2.ChooseName();
+            Console.Clear();
+            player1.ChooseGesture();
+            player2.ChooseGesture();
+            Console.WriteLine(player1.name + " has chosen " + player1.gesture);
+            Console.WriteLine(player2.name + " has chosen " + player2.gesture);
+        }
+        
         
     }
 }
