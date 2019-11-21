@@ -6,7 +6,7 @@ namespace RPSLS
 {
     public class Human : Player
     {
-
+        string newGesture;
         public override void ChooseGesture()
         {
             Console.WriteLine("Please Choose one of the following");
