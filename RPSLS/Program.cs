@@ -9,7 +9,7 @@ namespace RPSLS
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Game game = new Game();
-            game.RuneGame();
+            game.Intro();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace RPSLS
         {
             Console.WriteLine("Please enter the number of players.\n1 or 2");
             string numberPlayers = Console.ReadLine();
+            System.Threading.Thread.Sleep(2000);
             switch (numberPlayers)
             {
                 case "1":
@@ -53,14 +54,14 @@ namespace RPSLS
                 p2.ChooseGesture();
                 Console.WriteLine(p1.name + " has chosen " + p1.gesture);
                 Console.WriteLine(p2.name + " has chosen " + p2.gesture);
-                Console.ReadLine();
-                GameRules();
-                Console.ReadLine();
+                System.Threading.Thread.Sleep(3000);
+                FindWinner();
+                System.Threading.Thread.Sleep(3000);
                 Console.Clear();
             }
         }
         
-        public void GameRules()
+        public void FindWinner()
         {
             if (p1.gesture == p2.gesture)
             {
@@ -216,17 +217,43 @@ namespace RPSLS
                     Environment.Exit(0);
                 }
             }
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey(true);
+            Console.WriteLine("Hit enter to continue...");
+            Console.ReadLine();
 
 
         }
 
         public void Intro()
         {
+            string startGame;
+            Console.Clear();
+            Console.WriteLine("Loading..........");
+            System.Threading.Thread.Sleep(6000);
+            Console.Clear();
             Console.WriteLine("Welcome!");
             Console.WriteLine(".........................");
+            System.Threading.Thread.Sleep(2000);
             Console.WriteLine("Are you ready for a good old game of Rock, Paper, Scissors, Lizard, Spock?");
+            Console.WriteLine("...........................................................................");
+            System.Threading.Thread.Sleep(2000);
+            Console.WriteLine("Rules are as goes:");
+            Console.WriteLine("Rock crushes Scissors\nScissors cuts Paper\nPaper covers Rock\nRock curshes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock");
+            Console.WriteLine("When you are ready enter either start or quit to exit.");
+            startGame = Console.ReadLine().ToLower().Trim();
+            if(startGame == "start")
+            {
+                RuneGame();
+            }
+            else if(startGame == "quit")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry please try again.");
+                System.Threading.Thread.Sleep(2000);
+                Intro();
+            }
 
         }
         
