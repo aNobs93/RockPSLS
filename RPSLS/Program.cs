@@ -6,6 +6,8 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Game game = new Game();
             game.RuneGame();
         }

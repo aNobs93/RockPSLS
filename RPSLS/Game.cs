@@ -11,7 +11,7 @@ namespace RPSLS
 
         public string GetNumberPlayer()
         {
-            Console.WriteLine("Please enter the number of players.");
+            Console.WriteLine("Please enter the number of players.\n1 or 2");
             string numberPlayers = Console.ReadLine();
             switch (numberPlayers)
             {
@@ -47,21 +47,21 @@ namespace RPSLS
             p1.ChooseName();
             p2.ChooseName();
             Console.Clear();
-            while (p1.score < 3 || p2.score < 3)
+            while (p1.score < 2 || p2.score < 2)
             {
                 p1.ChooseGesture();
                 p2.ChooseGesture();
                 Console.WriteLine(p1.name + " has chosen " + p1.gesture);
                 Console.WriteLine(p2.name + " has chosen " + p2.gesture);
+                Console.ReadLine();
                 GameRules();
+                Console.ReadLine();
                 Console.Clear();
             }
         }
         
         public void GameRules()
         {
-            string a = p1.gesture;
-            string b = p2.gesture;
             if (p1.gesture == p2.gesture)
             {
                 Console.WriteLine(p1.gesture + " VS " + p2.gesture + " Doesn't do much! Try Again!");
@@ -177,8 +177,6 @@ namespace RPSLS
         public void Points(int _player1, int _player2)
         {
             string retry;
-            //p1.score = 0;
-            //p2.score = 0;
             if(_player1 > _player2)
             {
                 p1.score++;
@@ -187,10 +185,11 @@ namespace RPSLS
             {
                 p2.score++;
             }
-            
-            if(p1.score == 3)
+            Console.WriteLine("Current score is:\n" + p1.name + ": " + p1.score + "\n" + p2.name + ": " + p2.score);
+
+            if(p1.score == 2)
             {
-                Console.WriteLine(p1.name + " has won 3 times!");
+                Console.WriteLine(p1.name + " has won 2 times!");
                 Console.WriteLine("Would you like to play again?\nYes/No");
                 retry = Console.ReadLine().ToLower().Trim();
                 if(retry == "yes")
@@ -199,13 +198,13 @@ namespace RPSLS
                 }
                 else
                 {
-                    return;
+                    Environment.Exit(0);
                 }
 
             }
-            else if(p2.score == 3)
+            else if(p2.score == 2)
             {
-                Console.WriteLine(p2.name + " has won 3 times!");
+                Console.WriteLine(p2.name + " has won 2 times!");
                 Console.WriteLine("Would you like to play again?\nYes/No");
                 retry = Console.ReadLine().ToLower().Trim();
                 if (retry == "yes")
@@ -214,13 +213,20 @@ namespace RPSLS
                 }
                 else
                 {
-                    return;
+                    Environment.Exit(0);
                 }
             }
-
-            Console.WriteLine("Current score is:\n" + p1.name + "-" + p1.score + "\n" + p2.name + "-" + p2.score);
             Console.WriteLine("Press any key to continue...");
-            //Console.ReadKey(true);
+            Console.ReadKey(true);
+
+
+        }
+
+        public void Intro()
+        {
+            Console.WriteLine("Welcome!");
+            Console.WriteLine(".........................");
+            Console.WriteLine("Are you ready for a good old game of Rock, Paper, Scissors, Lizard, Spock?");
 
         }
         
